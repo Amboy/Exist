@@ -1,0 +1,18 @@
+<h1>Author </h1>
+<p><%= say_hello(@author)%></p>
+<table>
+<tr>
+  <th>lastname</th>
+  <th>firstname</th>
+  <th>birthday</th>
+</tr>
+
+<tr>
+  <td><%= @author.last_name%></td>
+  <td><%= @author.first_name%></td>
+  <td><%= @author.birthday%></td>
+</tr>
+</table>
+
+<%=link_to "back to index", authors_path%>
+<%=link_to "delete", @author, :confirm => "Confirm delete? \"#{@author.first_name} #{@author.last_name}\"", :method => :delete%>

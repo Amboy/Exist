@@ -1,0 +1,33 @@
+body{
+  text-align:center;
+  background-color:silver;
+  padding:1em;
+  margin: 0em auto;
+  width: 500px;
+}
+
+table {
+  width: 100%;
+  border-bottom: 2px solid midnightblue;
+ 
+}
+h1, h2, h3,h4,h5,h6,p{
+  color:midnightblue;
+  text-transform:uppercase;}
+
+th, td {  
+  color:royalblue;
+  border-top:none;
+  border-left: none;
+  border-right:none;
+  border-bottom:.5px dashed blue; 
+  width: 5%;
+
+}
+th {
+  font-style:italic;
+  text-transform:uppercase;
+}
+td.data{
+  text-align:left;
+}

@@ -1,0 +1,7 @@
+<h3>List of all authors</h3>
+
+<% @authors.each do |author| %>
+  <%= author_list(author)%>
+<%end%>
+
+<%=link_to "create new author", new_author_path%>

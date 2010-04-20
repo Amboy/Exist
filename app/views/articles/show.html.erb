@@ -1,0 +1,22 @@
+<h1>Articles</h1>
+<table>
+<tr>
+  <th>Title: </th>
+  <td><%= @article.title%></td>
+</tr>
+<tr>
+  <th>Author: </th>
+  <td><%= Author.find(@article.author_id).full_name%></td>  
+</tr>
+<tr>
+  <th>Body: </th>
+</tr>
+<tr>
+<td><%= @article.body%></td>  
+</tr>
+</table>
+
+<%=link_to "back to author index", authors_path%> <br>
+<%=link_to "back to article index", articles_path%> <br>
+<%=link_to "delete", @article, :confirm => "Confirm delete? \"#{@article.title}\"", :method => :delete%><br>
+<%=link_to "print me", print_article_path(@article) %> <br>

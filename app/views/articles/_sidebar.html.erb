@@ -1,0 +1,10 @@
+<h3>Article list </h3>
+<%Article.all.each do |article|%>
+  <%if article.isPosted? and article != @article%>
+	  <p class="articlelist">
+	    <%=link_to truncate(article.title, :length => 30), article_path(article)%>
+	    <%= "by #{Author.find(article.author_id).full_name}"%>
+	  </p>
+	  <br />
+   <%end%>
+<%end%>

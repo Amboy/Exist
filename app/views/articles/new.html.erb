@@ -1,0 +1,10 @@
+<h1>Create new Article</h1>
+
+<% form_for(@article) do |f|%>
+<%=f.error_messages%>
+  <%= render :partial => "form", :locals =>{:f => f} %>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>
+

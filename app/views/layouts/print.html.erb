@@ -1,0 +1,10 @@
+<div>
+  <h2 class='blog-print-title'><%= @article.title%> </h2>
+  <div class='blog-print'>
+    <%="By #{Author.find(@article.author_id).full_name}  "%>
+    <%="Created at #{@article.created_at}"%> <br /><br />
+    <%=@article.body%>
+  </div>
+  <hr>
+  <br>
+</div>

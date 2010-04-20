@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Design Portfolio Template</title>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/blog.css" />
+
+</head>
+
+<body>
+
+
+<div id="top">
+</div><!-- top -->
+
+<div id="topline">	
+</div><!-- topline -->
+
+
+<div id="wrapper">
+
+    	<div class="content">
+    	
+             <div id="header">
+             
+                    <h1><a href="#"><span>your design</span>portfolio</a></h1>
+                    
+                     <div id="menu">
+                
+                        <ul>	
+                            <li><a href="#"><%=link_to "home", "/" %></a></li>
+                            <li class="selected"><a href="#"><%=link_to "articles",articles_path %></a></li>
+                            <li><a href="#">blog</a></li>
+                            <li><a href="#">about</a></li>
+                            <li><a href="#">contact us</a></li>
+                        </ul>
+                    
+                	</div><!-- menu -->
+                
+             </div><!--header-->
+             
+               <div class="sidebar">
+		
+		<%= render :partial => "articles/sidebar" %>
+             </div><!--sidebar-->
+             
+             <div id="container">
+             	<%= yield %>
+             </div><!--container-->                        
+                        	
+        </div><!--content-->
+        
+    </div><!--wrapper-->
+    
+<div id="footer">
+    	<div class="content">
+                   <a href="#"><span class="leftp">copyright 2010 your comapny name</span></a>
+                   <a href="http://vectorart.org"><span class="rightp"> Thanks to VectorArt</span></a>
+                 </div><!--content-->
+                        
+</div><!--footer-->        
+</body>
+</html>
