@@ -29,6 +29,7 @@ class ArticlesController < ApplicationController
 
   end
   def create
+	raise "error"
     @article = Article.create(params[:article])
     if @article.save 
 	redirect_to @article
