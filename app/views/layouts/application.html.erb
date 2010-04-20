@@ -45,7 +45,7 @@
                <div class="sidebar">
 		
 		
-                <%= logged_in?  ? "Good day #{current_author.full_name} <br /> Time now is #{Time.now. strftime("%B %d, %Y, %H:%M")} <br /> #{link_to "log out",logout_path}" : "#{link_to "log in to access this page", login_path}"%>
+                <p class="log"><%= logged_in?  ? "Good day #{current_author.full_name} <br /> Time now is #{Time.now. strftime("%B %d, %Y, %H:%M")} <br /> #{link_to "log out",logout_path}" : "#{link_to "log in to access this page", login_path}"%> </p>
 		<br />
               <%= render :partial => "articles/sidebar" %>
              </div><!--sidebar-->

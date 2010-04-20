@@ -1,7 +1,40 @@
-<h3>List of all authors</h3>
-
-<% @authors.each do |author| %>
-  <%= author_list(author)%>
-<%end%>
+<h3 class="titles">List of all authors</h3>
+<br />
+<table>
+  <% @authors.each do |author| %>
+    <tr>
+      <th class="Labels">Name:</th>
+      <td class="data"><%=author.full_name %></td>
+    </tr>
+    <tr>
+      <th class="Labels">Birthday:</th>
+      <td class="data"><%=author.birthday %></td>
+    </tr>
+    <tr>
+      <th class="Labels">Email Address:</th>
+      <td class="data"><%=author.email %></td>
+    </tr>
+    <tr>
+       <th class="Labels">Articles:</th>
+       <td class="data">
+               <%author.articles.each do |i|  %>
+                 <%=link_to i.title, article_path(i) %> <br> 
+               <%end %> 
+       </td>
+    </tr>
+    <tr>  
+       <th class="Labels"> Actions: </th>
+       <td>
+        <ul class="nobullets">
+          <li><%=link_to "Edit", edit_author_path(author) %></li>
+          <li><%=link_to "Show", author %></li>
+ 	  <li><%=link_to "delete", author, :confirm => "Confirm delete? \"#{author.full_name}\"", :method => :delete %></li>
+ 	</ul>
+       </td>
+    </tr>
+    <tr><td colspan=2><hr></td></tr>
+    <br />
+  <%end%>
+</table>
 
 <%=link_to "create new author", new_author_path%>

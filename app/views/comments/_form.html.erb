@@ -1,13 +1,27 @@
 <% form_for( :comment, :url => article_comments_path(article)) do |f|%>
   <hr>
-  <h3>Post a Comment </h3>
-  <p>
+  <h3 class="titles">Post a Comment </h3>
+<table>
+<tr>
+  <td class="Labels">
    <%= f.label :email%>
+  </td>
+  <td>
    <%=f.text_field :email %>
-  </p>
-  <p>
-   <%= f.label :body%>
+  </td>
+</tr>
+<tr>
+  <td class="Labels">
+   <%= f.label :body %>
+  </td>
+  <td>
+  </td>
+</tr>
+<tr>
+  <td colspan=2>
    <%= f.text_area :body, :rows =>6%>   
-  </p>
+  </td>
+</tr>
+</table>
  <%=f.submit "post comment"%>
 <%end%>

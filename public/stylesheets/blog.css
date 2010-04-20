@@ -10,12 +10,54 @@
 .blog-comments{
 }
 
-table,th, td{ font-family:garuda; }
-th{ width: 25%; }
+/*
+MINE
+*/
+h3.titles{
+  background:url(../images/logo.png) left top no-repeat;
+  margin:1px;
+  padding:0px 0 0 70px;
+  font-size:30px;
+}
+.textareaBIG{
+  width:100%
+}
+
+table,th, td{ 
+  font-family:garuda; 
+}
+
 td{ text-indent:15px; }
-.label { color:skyblue; text-decoration:bold; text-align:right}
+td.reverse{ text-align:right}
 td.comment { color:midnightblue; border:1px solid white; background-color:powderblue;}
+
 .email {text-decoration:underline; }
-.articlelist {
-text-indent:15px;
-text-decoration:italic;}
+
+/*sidebar header*/
+.log{
+  color:white;
+  border:.5px solid blue;
+  background-color:royalblue;
+}
+
+/*labels and list*/
+.Labels { 
+  color:skyblue; 
+  text-decoration:bold; 
+  text-align:right;
+}
+.nobullets{
+margin:0 0 0 15px;
+list-style:none;
+}
+
+/*
+  errors
+*/
+.fieldWithErrors input, .fieldWithErrors textarea{
+  background-color:#E52B50;
+}
+#errorExplanation{
+  background-color:#E52B50;
+  text-indent:15px;
+}

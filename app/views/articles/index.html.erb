@@ -1,26 +1,33 @@
-<h3>List of all articles</h3>
-<table width:100%>
+<h3 class="titles">List of all articles</h3>
+<br />
+<table>
+  <% @articles.each do |article| %>
 
-<% @articles.each do |article| %>
-<tr>
-  <th class="label">Title: </th>
-  <td><%= link_to article.title, article%></td>
-</tr>
-<tr>
-  <th class="label">Author: </th>
-    <%author = Author.find(article.author_id)%>
-  <td><%= link_to "#{author.full_name}", author_path(author)%></td>  
-</tr>
-<tr>
-  <td></td>
-  <td><%= link_to "Edit", edit_article_path(article)%>    <%= link_to "Delete", article, :confirm => "Confirm delete? \"#{article.title}\"", :method => :delete%></td>
-  
-</tr>
-<tr><td colspan=2><hr></td></tr>
+   <%= article.isPosted? ? "<tr class='posted'>" : "<tr>"%>
+      <th class="Labels">Title: </th>
+      <td><%= link_to article.title, article%></td>
+    </tr>
 
-<%end%>
+   <%= article.isPosted? ? "<tr class='posted'>" : "<tr>"%>
+      <th class="Labels">Author: </th>
+      <%author = Author.find(article.author_id)%>
+      <td><%= link_to "#{author.full_name}", author_path(author)%></td>  
+    </tr>
 
+   <%= article.isPosted? ? "<tr class='posted'>" : "<tr>"%>
+      <th class="Labels">Actions:</th>
+      <td >
+	<ul class="nobullets">
+	<%if(!article.isPosted?)%>
+	  <li><%= link_to "Edit", edit_article_path(article)%></li>
+	<%end%>
+	  <li><%= link_to "Delete", article, :confirm => "Confirm delete? \"#{article.title}\"", :method => :delete%></td></li>
+	</ul>  
+    </tr>
+
+    <tr><td colspan=2><hr></td></tr>
+  <%end%>
 </table>
-
+<br />
 
 <%=link_to "create new article", new_article_path%>

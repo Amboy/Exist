@@ -1,18 +1,28 @@
-<h1>Author </h1>
+<h3 class="titles">Author </h3>
 <p><%= say_hello(@author)%></p>
+<hr>
 <table>
 <tr>
-  <th>lastname</th>
-  <th>firstname</th>
-  <th>birthday</th>
+  <td class="Labels">Lastname</td>
+  <td class="Labels">Firstname</td>
+  <td class="Labels">Birthday</td>
 </tr>
 
 <tr>
-  <td><%= @author.last_name%></td>
-  <td><%= @author.first_name%></td>
-  <td><%= @author.birthday%></td>
+  <td class="Labels"><%= @author.last_name%></td>
+  <td class="Labels"><%= @author.first_name%></td>
+  <td class="Labels"><%= @author.birthday%></td>
 </tr>
 </table>
-
-<%=link_to "back to index", authors_path%>
-<%=link_to "delete", @author, :confirm => "Confirm delete? \"#{@author.first_name} #{@author.last_name}\"", :method => :delete%>
+<hr>
+<table>
+<tr>
+  <td class="Labels">Actions: </td>
+  <td>
+  <ul class="nobullets"
+  <li><%=link_to "Back to Index", authors_path%></li>
+  <li><%=link_to "Delete Author", @author, :confirm => "Confirm delete? \"#{@author.first_name} #{@author.last_name}\"", :method => :delete%></li>
+  </ul>
+</td>
+</tr>
+</table>
