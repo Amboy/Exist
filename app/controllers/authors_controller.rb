@@ -1,12 +1,11 @@
 class AuthorsController < ApplicationController
+    before_filter :require_author, :only => [:new, :create]
   def index
     @authors = Author.all
   end
 
   def show
-    #@authors = Author.all
     @author = Author.find(params[:id])
-    #raise 'test'
   end
 
   def new
@@ -26,7 +25,6 @@ class AuthorsController < ApplicationController
     end
   end
   def update
-    #raise "test"
     @author = Author.find(params[:id])
     if @author.update_attributes(params[:author])
       redirect_to @author

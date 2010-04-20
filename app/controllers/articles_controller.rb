@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_filter :require_author, :except => [:latest, :show]
   def index
     @articles = Article.all
     respond_to do |format|
@@ -26,7 +27,6 @@ class ArticlesController < ApplicationController
 
   def edit
      @article = Article.find(params[:id])
-
   end
 
   def create

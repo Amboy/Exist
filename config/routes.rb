@@ -4,10 +4,14 @@ ActionController::Routing::Routes.draw do |map|
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
+  map.resources :sessions, :collection => {:logout => :get}
   map.resources :authors
   map.resources :articles, :collection => {:latest => :get}, :member => {:print => :get}  do |articles|
     articles.resources :comments
   end
+  
+  map.login "/login", :controller => "sessions", :action => "new"
+  map.logout "/logout", :controller => "sessions", :action =>"logout"
   # Sample of named route:
   #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
   # This route can be invoked with purchase_url(:id => product.id)
