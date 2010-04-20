@@ -28,8 +28,8 @@ class ArticlesController < ApplicationController
      @article = Article.find(params[:id])
 
   end
+
   def create
-	raise "error"
     @article = Article.create(params[:article])
     if @article.save 
 	redirect_to @article
@@ -37,6 +37,7 @@ class ArticlesController < ApplicationController
 	render :action=> 'new'
     end
   end
+
   def update
     @article = Article.find(params[:id])
     if @article.update_attributes(params[:article])
