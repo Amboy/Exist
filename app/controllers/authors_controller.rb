@@ -16,6 +16,7 @@ class AuthorsController < ApplicationController
      @author = Author.find(params[:id])
 
   end
+
   def create
     @author = Author.create(params[:author])
     if @author.save 
@@ -24,6 +25,7 @@ class AuthorsController < ApplicationController
 	render :action=> 'new'
     end
   end
+
   def update
     @author = Author.find(params[:id])
     if @author.update_attributes(params[:author])
@@ -32,6 +34,7 @@ class AuthorsController < ApplicationController
       render :action=>'edit'  
     end
   end
+
   def destroy
     @author = Author.find(params[:id])
     @author.destroy

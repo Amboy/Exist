@@ -2,6 +2,7 @@
 module CommentsHelper
 
   def commentbody(comment)
+    unless(comment.new_record?)
     %Q{
 	<table>
            <tr>
@@ -9,16 +10,17 @@ module CommentsHelper
 		<td class="email">#{comment.email}</th>
 	   </tr>
            <tr>
-		<th>Time posted: </th>
-		<td>#{comment.created_at}</th>
+		<th>Time Posted: </th>
+		<td>#{comment.created_at.strftime("%B %d, %Y , %H:%M")}</th>
 	   </tr>
 	   <tr>
-		<th>comment:</th>
+		<th>Comment:</th>
 		<td class="comment">#{comment.body}</td>
 	   </tr>
 	
         <table>
 	<br>
     }
+    end	
   end
 end

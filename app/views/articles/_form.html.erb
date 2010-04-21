@@ -10,7 +10,7 @@
     <%= f.text_area :body %>
   </p>
   <br />
-  <p>
+  <p>	
     <%= f.label :author_id %>
     <%= collection_select(:article, :author_id, Author.all, :id, :full_name) %>
   </p>
@@ -20,8 +20,4 @@
     <%= select :article, :status, Article.statuses %>
   </p>
   <br />
-  <p>
-     <%= f.label :date_posted %>
-    <%= f.datetime_select :date_posted %>
-  </p>
-  <br />
+    <%= f.hidden_field :date_posted, :value=> "#{DateTime.now().strftime("%Y%m%d%H%M%S")}" %>

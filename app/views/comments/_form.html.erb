@@ -1,7 +1,7 @@
 <% form_for( :comment, :url => article_comments_path(article)) do |f|%>
   <hr>
   <h3 class="titles">Post a Comment </h3>
-<table>
+<table style="width:100%">
 <tr>
   <td class="Labels">
    <%= f.label :email%>
@@ -14,12 +14,10 @@
   <td class="Labels">
    <%= f.label :body %>
   </td>
-  <td>
-  </td>
 </tr>
 <tr>
-  <td colspan=2>
-   <%= f.text_area :body, :rows =>6%>   
+  <td colspan="2">
+   <%= f.text_area :body, :rows => 6%>   
   </td>
 </tr>
 </table>

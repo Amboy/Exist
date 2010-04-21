@@ -1,6 +1,6 @@
 <h3 class="titles">List of all authors</h3>
 <br />
-<table>
+<table class="all">
   <% @authors.each do |author| %>
     <tr>
       <th class="Labels">Name:</th>
@@ -8,7 +8,7 @@
     </tr>
     <tr>
       <th class="Labels">Birthday:</th>
-      <td class="data"><%=author.birthday %></td>
+      <td class="data"><%=author.birthday.strftime("%B %d, %Y") %></td>
     </tr>
     <tr>
       <th class="Labels">Email Address:</th>
@@ -16,13 +16,17 @@
     </tr>
     <tr>
        <th class="Labels">Articles:</th>
-       <td class="data">
+       <td>
+ 		<ul class="nobullets">
                <%author.articles.each do |i|  %>
-                 <%=link_to i.title, article_path(i) %> <br> 
+                 <li><%=link_to i.title, article_path(i) %> <br> </li>
                <%end %> 
+		</ul>
        </td>
     </tr>
-    <tr>  
+    <% if author == current_author %>
+    <tr><td colspan=2><hr></td></tr>
+    <tr class="posted">  
        <th class="Labels"> Actions: </th>
        <td>
         <ul class="nobullets">
@@ -32,6 +36,7 @@
  	</ul>
        </td>
     </tr>
+    <% end %>
     <tr><td colspan=2><hr></td></tr>
     <br />
   <%end%>

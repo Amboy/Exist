@@ -22,16 +22,33 @@ h3.titles{
 .textareaBIG{
   width:100%
 }
+p.author{
+  text-indent:90px;
+  
+}
+table.all{
+width:60%
+}
 
 table,th, td{ 
   font-family:garuda; 
 }
+tr.posted{
+  background-color:#E0115F;
+}
+tr.draft{
+  background-color:#B7410E;
+}
 
 td{ text-indent:15px; }
 td.reverse{ text-align:right}
-td.comment { color:midnightblue; border:1px solid white; background-color:powderblue;}
+td.comment { color:midnightblue; border:1px solid white; background-color:powderblue;width:100%}
 
 .email {text-decoration:underline; }
+
+.mceLayout, .defaultSimpleSkin{
+width:100% !important;
+}
 
 /*sidebar header*/
 .log{

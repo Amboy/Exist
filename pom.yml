@@ -11,5 +11,5 @@ release_info:
   server: http://pip.manila.exist.com
   group_id: Amboy_suarez
   type: tar.gz
-  version: 0.0.8	
+  version: 0.0.9	
   artifact_id: Amboy_suarez

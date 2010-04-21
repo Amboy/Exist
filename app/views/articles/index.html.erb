@@ -1,20 +1,30 @@
-<h3 class="titles">List of all articles</h3>
+<h3 class="titles" style="display: inline-block">List of all articles</h3>
+<table style="float:right; text-align: center">
+  <tr>
+    <td style="width: 10px; background-color: 	#B7410E"> </td>  
+    <td>Draft</td>
+    <td> </td>
+    <td style="width: 10px; background-color: #E0115F"> </td>
+    <td>Posted</td>
+  </tr>
+</table>
+
 <br />
-<table>
+<table class="all">
   <% @articles.each do |article| %>
 
-   <%= article.isPosted? ? "<tr class='posted'>" : "<tr>"%>
+   <%= article.isPosted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
       <th class="Labels">Title: </th>
       <td><%= link_to article.title, article%></td>
     </tr>
 
-   <%= article.isPosted? ? "<tr class='posted'>" : "<tr>"%>
+   <%= article.isPosted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
       <th class="Labels">Author: </th>
       <%author = Author.find(article.author_id)%>
       <td><%= link_to "#{author.full_name}", author_path(author)%></td>  
     </tr>
 
-   <%= article.isPosted? ? "<tr class='posted'>" : "<tr>"%>
+   <%= article.isPosted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
       <th class="Labels">Actions:</th>
       <td >
 	<ul class="nobullets">

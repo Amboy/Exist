@@ -1,5 +1,7 @@
 <div>
   <h3 class='titles'><%= @article.title%> </h3>
+  <p class="author">by <%=Author.find(@article.author_id).full_name %></p>
+  <hr>
   <div class='blog-body'>
     <%=@article.body%>
   </div>
@@ -17,15 +19,17 @@
 <br>
 <br />
 <hr>
-<table>
-<tr><td class="Labels">Actions: </td>
-<td>
-<ul class="nobullets">
-<li><%=link_to "Delete", @article, :confirm => "Confirm delete? \"#{@article.title}\"", :method => :delete%> </li>
-<li><%=link_to "Print Document", print_article_path(@article) %></li>
-<li><%=link_to "Back to Author index", authors_path%> </li>
-<li><%=link_to "Back to Article index", articles_path%> </li>
-</ul></td>
-</tr>
-</table>
+<%if logged_in?%>
+	<table>
+	<tr><td class="Labels">Actions: </td>
+	<td>
+	<ul class="nobullets">
+	<li><%=link_to "Delete", @article, :confirm => "Confirm delete? \"#{@article.title}\"", :method => :delete%> </li>
+	<li><%=link_to "Print Document", print_article_path(@article) %></li>
+	<li><%=link_to "Back to Author index", authors_path%> </li>
+	<li><%=link_to "Back to Article index", articles_path%> </li>
+	</ul></td>
+	</tr>
+	</table>
+<%end%>
 </div>
