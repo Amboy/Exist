@@ -31,6 +31,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.create(params[:article])
+    puts "saving #{ params }"
     if @article.save 
 	redirect_to @article
     else 
