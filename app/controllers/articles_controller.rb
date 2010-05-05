@@ -10,14 +10,14 @@ class ArticlesController < ApplicationController
   end
 
   def latest
-    @article = Article.latest
+    @article = Article.latest.first
     @comment = Comment.new(:article_id => @article.id)
 
   end
 
   def show
     @article = Article.find(params[:id])
-    @comments = @article.comments.build
+    @comment  = @article.comments.build
     render :action => "latest"
   end
 

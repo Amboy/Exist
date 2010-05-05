@@ -16,4 +16,5 @@ class CommentTest < ActiveSupport::TestCase
   test "check for email" do
      assert_equal false, @@a2.save
   end
+
 end

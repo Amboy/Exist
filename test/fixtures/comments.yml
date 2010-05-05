@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  email: MyString
+  email: MyString@somewhere.com
   body: MyText
   comment_date: 2010-04-16 15:40:18
   article_id: 1
 
 two:
-  email: MyString
+  email: MyString@somewhere.com
   body: MyText
   comment_date: 2010-04-16 15:40:18
   article_id: 1

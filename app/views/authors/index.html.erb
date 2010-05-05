@@ -2,44 +2,19 @@
 <br />
 <table class="all">
   <% @authors.each do |author| %>
-    <tr>
-      <th class="Labels">Name:</th>
-      <td class="data"><%=author.full_name %></td>
-    </tr>
-    <tr>
-      <th class="Labels">Birthday:</th>
-      <td class="data"><%=author.birthday.strftime("%B %d, %Y") %></td>
-    </tr>
-    <tr>
-      <th class="Labels">Email Address:</th>
-      <td class="data"><%=author.email %></td>
-    </tr>
-    <tr>
-       <th class="Labels">Articles:</th>
-       <td>
- 		<ul class="nobullets">
-               <%author.articles.each do |i|  %>
-                 <li><%=link_to i.title, article_path(i) %> <br> </li>
-               <%end %> 
-		</ul>
-       </td>
-    </tr>
-    <% if author == current_author %>
-    <tr><td colspan=2><hr></td></tr>
-    <tr class="posted">  
-       <th class="Labels"> Actions: </th>
-       <td>
-        <ul class="nobullets">
-          <li><%=link_to "Edit", edit_author_path(author) %></li>
-          <li><%=link_to "Show", author %></li>
- 	  <li><%=link_to "delete", author, :confirm => "Confirm delete? \"#{author.full_name}\"", :method => :delete %></li>
- 	</ul>
-       </td>
-    </tr>
-    <% end %>
-    <tr><td colspan=2><hr></td></tr>
+    <table>
+      <%= author_info(author) %>
+      <%= author_articles(author) %>
+
+      <% if author == current_author %>
+        <%= author_actions(author, "edit") %>
+      <% end %>
+
+    <tr><td colspan=2><hr /></td></tr>
     <br />
-  <%end%>
+  </table>
+  <% end %>
+
 </table>
 
-<%=link_to "create new author", new_author_path%>
+<%=  link_to "create new author", new_author_path %>

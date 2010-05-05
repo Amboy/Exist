@@ -13,22 +13,22 @@
 <table class="all">
   <% @articles.each do |article| %>
 
-   <%= article.isPosted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
+   <%= article.is_posted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
       <th class="Labels">Title: </th>
       <td><%= link_to article.title, article%></td>
     </tr>
 
-   <%= article.isPosted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
+   <%= article.is_posted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
       <th class="Labels">Author: </th>
       <%author = Author.find(article.author_id)%>
       <td><%= link_to "#{author.full_name}", author_path(author)%></td>  
     </tr>
 
-   <%= article.isPosted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
+   <%= article.is_posted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
       <th class="Labels">Actions:</th>
       <td >
 	<ul class="nobullets">
-	<%if(!article.isPosted?)%>
+	<%if(!article.is_posted?)%>
 	  <li><%= link_to "Edit", edit_article_path(article)%></li>
 	<%end%>
 	  <li><%= link_to "Delete", article, :confirm => "Confirm delete? \"#{article.title}\"", :method => :delete%></td></li>

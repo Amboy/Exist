@@ -1,6 +1,6 @@
 <h3 class="titles">Author </h3>
 <p><%= say_hello(@author) %></p>
-<hr>
+<hr />
 <table>
 <tr>
   <td class="Labels">Lastname</td>
@@ -14,16 +14,7 @@
   <td class="Labels"><%= @author.birthday.strftime("%b %d, %Y") %></td>
 </tr>
 </table>
-<hr>
+<hr />
 <table>
-<tr>
-  <td class="Labels">Actions: </td>
-  <td>
-  <ul class="nobullets"
-  <li><%= link_to "Create new Article", new_article_path %></li>
-  <li><%= link_to "Back to Index", authors_path %></li>
-  <li><%= link_to "Delete Author", @author, :confirm => "Confirm delete? \"#{@author.first_name} #{@author.last_name}\"", :method => :delete %></li>
-  </ul>
-</td>
-</tr>
+<%= author_actions(@author, "show") %>
 </table>

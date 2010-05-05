@@ -1,17 +1,33 @@
 class Article < ActiveRecord::Base
+
+  #Associations
+  #
   belongs_to :author
   has_many :comments
+
+  #validations
+  #
   validates_presence_of [:title, :body, :author], :message =>"is required"
-  def self.statuses
-    ["Draft","Posted"]
-  end
+
+  #callbacks
+  #
   def before_save
     date_posted = DateTime.new if status.eql?("Posted")
   end
-  def self.latest
-    Article.find_by_status("Posted", :order => "date_posted DESC")
+
+  #name scopes
+  #
+  named_scope :latest, :conditions => {:status => 'Posted'},
+                       :order      => 'date_posted DESC'
+  #Class Methods
+  def self.statuses
+    ["Draft","Posted"]
   end
-  def isPosted?
+  
+  #instance methods
+  #
+  def is_posted?
     status == "Posted"
-  end  
+  end
+
 end
