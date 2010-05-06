@@ -1,38 +1,13 @@
 <h3 class="titles" style="display: inline-block">List of all articles</h3>
-<table style="float:right; text-align: center">
+
   <%= view_legend %>
-</table>
 
 <br />
-<table class="all">
+
   <% @articles.each do |article| %>
-
-   <%= article.is_posted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
-      <th class="Labels">Title: </th>
-      <td><%= link_to article.title, article%></td>
-    </tr>
-
-   <%= article.is_posted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
-      <th class="Labels">Author: </th>
-      <%author = Author.find(article.author_id)%>
-      <td><%= link_to "#{author.full_name}", author_path(author)%></td>  
-    </tr>
-
-   <%= article.is_posted? ? "<tr class='posted'>" : "<tr class='draft'>"%>
-      <th class="Labels">Actions:</th>
-      <td >
-	<ul class="nobullets">
-	<%if(!article.is_posted?)%>
-	  <li><%= link_to "Edit", edit_article_path(article)%></li>
-	<%end%>
-	  <li><%= link_to "Delete", article, :confirm => "Confirm delete? \"#{article.title}\"", :method => :delete%></li>
-	</ul>
-      </td>
-    </tr>
-
-    <tr><td colspan=2><hr /></td></tr>
+    <%=  list_all(article, (article.is_posted? ? "posted" : "draft"), Author.find(article.author_id)) %>
   <%end%>
-</table>
+
 <br />
 
-<%=link_to "create new article", new_article_path%>
+<%=link_to "Create new article", new_article_path%>
