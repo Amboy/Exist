@@ -2,10 +2,6 @@
 module CommentsHelper
 
   def comment_body(comment)
-
-    puts "...........................Hello"
-    puts comment.inspect
-    puts "World..........................."
     return " " if comment.new_record?
     %Q{
 	     <table>

@@ -1,4 +1,15 @@
 module ArticlesHelper
+  def view_legend
+    %Q{
+      <tr>
+        <td style="width: 10px; background-color: 	#B7410E"> </td>
+        <td>Draft</td>
+        <td> </td>
+        <td style="width: 10px; background-color: #E0115F"> </td>
+        <td>Posted</td>
+    </tr>
+    }
+  end
   def view_comments(article)
     %Q{
       <p>Comments: </p>

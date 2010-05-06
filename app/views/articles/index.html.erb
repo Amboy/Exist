@@ -1,12 +1,6 @@
 <h3 class="titles" style="display: inline-block">List of all articles</h3>
 <table style="float:right; text-align: center">
-  <tr>
-    <td style="width: 10px; background-color: 	#B7410E"> </td>  
-    <td>Draft</td>
-    <td> </td>
-    <td style="width: 10px; background-color: #E0115F"> </td>
-    <td>Posted</td>
-  </tr>
+  <%= view_legend %>
 </table>
 
 <br />
@@ -31,11 +25,12 @@
 	<%if(!article.is_posted?)%>
 	  <li><%= link_to "Edit", edit_article_path(article)%></li>
 	<%end%>
-	  <li><%= link_to "Delete", article, :confirm => "Confirm delete? \"#{article.title}\"", :method => :delete%></td></li>
-	</ul>  
+	  <li><%= link_to "Delete", article, :confirm => "Confirm delete? \"#{article.title}\"", :method => :delete%></li>
+	</ul>
+      </td>
     </tr>
 
-    <tr><td colspan=2><hr></td></tr>
+    <tr><td colspan=2><hr /></td></tr>
   <%end%>
 </table>
 <br />
