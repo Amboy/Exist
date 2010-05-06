@@ -61,22 +61,6 @@ class ArticleTest < ActiveSupport::TestCase
 #    @article.body << str
 #    assert @article.send(:update)
 #  end
- 
-  test "if comment delete" do    
-    @article.save
-    @article.comments <<  @comment
-     assert_difference '@article.comments(true).count' , -1 do
-      @comment.delete_this_comment(@author) 
-     end
-  end
-  test "if no comment delete" do    
-    @article.save
-    @article.comments <<  @comment
-     assert_no_difference '@article.comments(true).count' do
-      @comment.delete_this_comment(@author2) 
-     end
-  end
-
 
   def teardown
     Article.delete_all
