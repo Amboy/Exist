@@ -1,13 +1,24 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   title: MyString
   body: MyText
   status: Posted
   author_id: 1
+  date_posted: <%= 1.day.ago %>
 
 two:
+  id: 2
   title: MyString
   body: MyText
   status: Draft
+  author_id: 2
+
+three:
+  id: 3
+  title: MyString12341234
+  body: MyText123412341234
+  status: Posted
   author_id: 1
+  date_posted: <%= 2.hours.ago %>

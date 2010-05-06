@@ -1,6 +1,6 @@
 <div>
   <h3 class='titles'><%= @article.title %> </h3>
-  <p class="author">by <%=  Author.find(@article.author_id).full_name %></p>
+  <p class="author">by <%= Author.find(@article.author_id).full_name %></p>
   <hr />
   
   <div class='blog-body'>
@@ -10,11 +10,11 @@
 
   <% if @article.is_posted? %>
     <%= view_comments(@article) %>
-    <%=  render :partial => 'comments/form', :locals => {:comment => @comment, :article =>@article} %>
+    <%= render :partial => 'comments/form', :locals => {:comment => @comment, :article =>@article} %>
   <% end %>
 
   <br /><br /><hr />
-  <%  if logged_in? %>
+  <% if logged_in? %>
     <%= article_actions(@article) %>
   <% end %>
 </div>

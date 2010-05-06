@@ -2,45 +2,27 @@ require 'test_helper'
 
 class AuthorTest < ActiveSupport::TestCase
 
-  # Replace this with your real tests.
   def setup
-    @correct = Author.create(:last_name => "Suarez", :first_name => "Amboy")
-    @incorrect1 = Author.new(:last_name => "fgsfds")
-    @incorrect2 = Author.new(:first_name => "fgsfds")
+    @author = authors(:one)
+    @author1 = authors(:two)
+    @author2 = authors(:three)
   end
 
-  test "the truth" do
-    #assert true
-    assert_equal Array, @correct.articles.class
+  # Associations test
+  #
+  test "has many articles" do
+    assert_equal Array, @author.articles.class
   end
 
-  test "check for first name" do
-     #assert true
-     assert_equal false, @incorrect1.valid?
+  # Validations test
+  #
+  test "valid author" do
+    puts @author1.inspect
+    assert @author1.save
   end
-
-  test "check for last name" do
-     #assert true
-     assert_equal false, @incorrect2.valid?
+  
+  def teardown
+    Author.delete_all
   end
-
-  test "if last name is nil" do
-     @correct.last_name = nil
-     assert_equal false, @correct.valid?
-     assert_equal true, @correct.errors.invalid?(:last_name)
-  end
-
-  test "if first name is nil" do
-     @correct.first_name = nil
-     assert_equal false, @correct.valid?
-     assert_equal true, @correct.errors.invalid?(:first_name)
-  end
-
-  test "if password fail" do
-    @correct.password = nil
-    assert_equal false, @correct.valid?
-    assert_equal true, @correct.errors.invalid?(:password)
-  end
-
 
 end

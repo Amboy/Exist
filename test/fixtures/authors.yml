@@ -5,9 +5,21 @@ one:
   first_name: MyString
   remarks: MyText
   birthday: 2010-04-16
+  email: MyString@yahoo.com
+  login: MyString
 
 two:
-  last_name: MyString
-  first_name: MyString
+  last_name: MyString2
+  first_name: MyString2
   remarks: MyText
   birthday: 2010-04-16
+  email: MyString2@yahoo.com
+  login: MyString2
+
+three:
+  last_name: MyString3
+  first_name: MyString3
+  remarks: MyText
+  birthday: 2010-04-16
+  email: MyString@yahoo.com
+  login: MyString

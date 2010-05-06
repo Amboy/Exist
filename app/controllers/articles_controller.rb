@@ -36,12 +36,11 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(params["article"])
-    puts "saving #{ params }"
+    @article = Article.create(params["article"])    
     if @article.save 
-	redirect_to @article
+      redirect_to @article
     else 
-	render :action=> 'new'
+      render :action=> 'new'
     end
   end
 
