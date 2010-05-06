@@ -4,8 +4,6 @@ class AuthorTest < ActiveSupport::TestCase
 
   def setup
     @author = authors(:one)
-    @author1 = authors(:two)
-    @author2 = authors(:three)
   end
 
   # Associations test
@@ -15,14 +13,27 @@ class AuthorTest < ActiveSupport::TestCase
   end
 
   # Validations test
-  #
-  test "valid author" do
-    puts @author1.inspect
-    assert @author1.save
+  test "check for no first name" do
+     @author.first_name = nil
+     assert_equal false, @author.valid?
+  end
+
+  test "check for no last name" do
+     @author.first_name = nil
+     assert_equal false, @author.valid?
+  end
+
+  test "check for no email" do
+     @author.email = nil
+     assert_equal false, @author.valid?
+  end
+
+  test "check for no login" do
+     @author.login = nil
+     assert_equal false, @author.valid?
   end
   
   def teardown
-    Author.delete_all
+      Author.delete_all
   end
-
 end

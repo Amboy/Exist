@@ -13,11 +13,11 @@ class ArticleTest < ActiveSupport::TestCase
 
   # Associations test
   #
-  test "associate to author" do
+  test "belongs to author" do
     assert_equal Author, @article.author.class
   end
 
-  test "associate to many comments" do
+  test "has many comments" do
     assert_equal Array, @article.comments.class
   end
 
@@ -25,22 +25,22 @@ class ArticleTest < ActiveSupport::TestCase
   #
   test "article was created" do
     @article.author = @author
-    assert @article.save
+    assert @article.valid?
   end
 
   test "article should not be created since no author" do
     @article.author = nil   
-    assert_equal false, @article.save
+    assert_equal false, @article.valid?
   end
 
   test "article should not be created since no title" do
     @article.title = nil
-    assert_equal false, @article.save
+    assert_equal false, @article.valid?
   end
 
   test "article should not be created since no body" do
     @article.body = nil   
-    assert_equal false, @article.save
+    assert_equal false, @article.valid?
   end
 
   # name scope test

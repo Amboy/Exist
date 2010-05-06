@@ -1,25 +1,31 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   last_name: MyString
   first_name: MyString
   remarks: MyText
   birthday: 2010-04-16
   email: MyString@yahoo.com
   login: MyString
+  crypted_password: 12345
 
 two:
+  id: 2
   last_name: MyString2
   first_name: MyString2
   remarks: MyText
   birthday: 2010-04-16
-  email: MyString2@yahoo.com
-  login: MyString2
+  email: MyString12341234@yahoo.com
+  login: 12341234
+  crypted_password: 123456
 
 three:
+  id: 3
   last_name: MyString3
   first_name: MyString3
   remarks: MyText
   birthday: 2010-04-16
   email: MyString@yahoo.com
   login: MyString
+  crypted_password: 123
