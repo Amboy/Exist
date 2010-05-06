@@ -1,4 +1,24 @@
 module ArticlesHelper
+  def view_article(article)
+    %Q{
+      <table>
+        <tr>
+          <th>Title: </th>
+          <td>#{article.title}</td>
+        </tr>
+        <tr>
+          <th>Author: </th>
+          <td>#{Author.find(article.author_id).full_name}</td>
+        </tr>
+        <tr>
+          <th>Body: </th>
+        </tr>
+        <tr>
+        <td>#{article.body}</td>
+        </tr>
+      </table>
+    }
+  end
   def view_legend
     %Q{
      <table style="float:right; text-align: center">
@@ -10,6 +30,8 @@ module ArticlesHelper
          <td>Posted</td>
        </tr>
      </table>
+
+     <br />
     }
   end
   def list_all(article, status, author)
@@ -37,6 +59,8 @@ module ArticlesHelper
 
         <tr><td colspan=2><hr /></td></tr>
       </table>
+
+      <br />
     }
   end
   def view_comments(article)
@@ -55,8 +79,12 @@ module ArticlesHelper
           <td class="Labels">Actions: </td>
           <td>
             <ul class="nobullets">
-              <li>#{link_to "Delete", article, :confirm => "Confirm delete? \'#{article.title}\'", :method => :delete} </li>
               <li>#{link_to "Print Document", print_article_path(article)}</li>
+              <li>#{link_to "Delete", article, :confirm => "Confirm delete? \'#{article.title}\'", :method => :delete}</li>
+            </ul>
+          </td>
+          <td>
+            <ul class="nobullets">
               <li>#{link_to "Back to Author index", authors_path} </li>
               <li>#{link_to "Back to Article index", articles_path} </li>
             </ul>

@@ -1,13 +1,9 @@
 <h3 class="titles" style="display: inline-block">List of all articles</h3>
 
-  <%= view_legend %>
+<%= view_legend %>
 
-<br />
+<% @articles.each do |article| %>
+  <%= list_all(article, (article.is_posted? ? "posted" : "draft"), Author.find(article.author_id)) %>
+<% end %>
 
-  <% @articles.each do |article| %>
-    <%=  list_all(article, (article.is_posted? ? "posted" : "draft"), Author.find(article.author_id)) %>
-  <%end%>
-
-<br />
-
-<%=link_to "Create new article", new_article_path%>
+<%=  link_to "Create new article", new_article_path %>
