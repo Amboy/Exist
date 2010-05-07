@@ -23,8 +23,15 @@ namespace :deploy do
 
   after 'deploy:setup', 'deploy:config_app'
 
+
   task :restart do
      run "/ecclabs/ecc_restart_app.sh #{application}"
   end
+
 end
 
+namespace :utils do
+  task :tail_log do
+    run "tailf #{deploy_to}/current/log/production.log"
+  end
+end
