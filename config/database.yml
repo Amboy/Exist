@@ -28,8 +28,8 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: amsblog_production
+  database: amboy
   pool: 5
-  username: root
-  password: root
+  username: amboy
+  password: amboy
 
