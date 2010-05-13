@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :authors
   map.resources :articles, :collection => {:latest => :get}, :member => {:print => :get}  do |articles|
     articles.resources :comments
+    articles.resources :likes, :collection => {:ilike => :post}, :member =>  {:unlike=>:delete}
   end
   
   map.login "/login", :controller => "sessions", :action => "new"

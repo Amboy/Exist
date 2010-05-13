@@ -1,0 +1,6 @@
+ <%  if (article.likes.exists?(:author_id  => current_author.id)) %>
+  <li>  <%=  link_to_remote( 'unlike', :update => 'likediv',:method => :delete, :url =>{:id => like.id, :article_id => article.id, :controller =>:likes, :action => "unlike" }) %> </li>
+<% else %>
+<li>  <%= link_to_remote( 'Like', :update => 'likediv', :url =>{:article_id => article.id, :controller =>:likes, :action => "ilike" })  %> </li>
+<% end  %>
+     <br />

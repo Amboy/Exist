@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       render :partial => "articles/update"
     else
       flash[:notice] = "fail to post comment."
-      render :template => "articles/latest"
+      render :partial => "articles/update"
     end    
   end
 

@@ -76,8 +76,10 @@ module ArticlesHelper
         <tr>
           <td class="Labels">Actions: </td>
           <td>
-            <ul class = "nobullets">
-              <li>like</li>
+            <ul class = "nobullets">      
+               <div id="likediv">
+                      #{render :partial => 'likes/like', :locals => { :article =>article, :like => article.likes.find(:first, :conditions => {:author_id => current_author.id})}}
+              </div>
               <li> #{link_to "Edit", edit_article_path(article) if !article.is_posted? } </li>
             </ul>
           </td>
