@@ -1,67 +1,79 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Design Portfolio Template</title>
-<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/blog.css" />
-<script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript">
-  tinyMCE.init({ mode: "textareas", theme: "simple"}); </script>
-</head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>AMS blog</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/blog.css" />
+    <script type="text/javascript" src="/javascripts/tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript">
+      
+      function display(action, id)
+      {
+        link = ( id < 0) ? "linkall" : "link"+id;
+        body = ( id < 0) ? "bodyall" : "body"+id;
+        string1 = ( id < 0) ? "Hide all Comments" : "Hide this Comment"
+        string2 = ( id < 0) ? "Show all Comments" : "Show this Comment"
+        if (action == 'show')
+        {
+          document.getElementById(body).style.display = "block";
+          document.getElementById(link).href= "javascript:display('hide', "+id+")";
+          document.getElementById(link).innerHTML = string1;
+        }
 
-<body>
+        if (action == 'hide')
+        {
+          document.getElementById(body).style.display = "none";
+          document.getElementById(link).href= "javascript:display('show', "+id+")";
+          document.getElementById(link).innerHTML = string2;
+        }    
+     }
+
+    </script>
+    <%= javascript_include_tag "prototype" %>
+  </head>
+
+  <body>
+
+    <div id="top">
+    </div><!-- top -->
+
+    <div id="topline">
+    </div><!-- topline -->
 
 
-<div id="top">
-</div><!-- top -->
+    <div id="wrapper">
+      <div class="content">
+         <div id="header">
+            <h1><a href="#"><span>AMS</span>blog</a></h1>
+             <div id="menu">
+                <ul>
+                    <li><a href="#"><%=  link_to "home", "/" %></a></li>
+                    <li><a href="#"><%=  link_to "article",articles_path %></a></li>
+                    <li><a href="#"><%=  link_to "author",authors_path %></a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">contact us</a></li>
+                </ul>
+            </div><!-- menu -->
+         </div><!--header-->
+         <div class="sidebar">
+            <p class="log"><%= logged_in?  ? "Good day #{current_author.full_name} <br /> Time now is #{Time.now. strftime("%B %d, %Y, %H:%M")} <br /> #{link_to "log out",logout_path}" : "#{link_to "log in to access this page", login_path}"%> </p>
+            <br />
+          <%= render :partial => "articles/sidebar" %>
+         </div><!--sidebar-->
 
-<div id="topline">	
-</div><!-- topline -->
-
-
-<div id="wrapper">
-
-    	<div class="content">
-    	
-             <div id="header">
-             
-                    <h1><a href="#"><span>your design</span>portfolio</a></h1>
-                    
-                     <div id="menu">
-                
-                        <ul>	
-                            <li><a href="#"><%=link_to "home", "/" %></a></li>
-                            <li><a href="#"><%=link_to "article",articles_path %></a></li>
-                            <li><a href="#"><%=link_to "author",authors_path %></a></li>
-                            <li><a href="#">about</a></li>
-                            <li><a href="#">contact us</a></li>
-                        </ul>
-                    
-                	</div><!-- menu -->
-                
-             </div><!--header-->
-             
-               <div class="sidebar">
-		
-		
-                <p class="log"><%= logged_in?  ? "Good day #{current_author.full_name} <br /> Time now is #{Time.now. strftime("%B %d, %Y, %H:%M")} <br /> #{link_to "log out",logout_path}" : "#{link_to "log in to access this page", login_path}"%> </p>
-		<br />
-              <%= render :partial => "articles/sidebar" %>
-             </div><!--sidebar-->
-             
-             <div id="container">
-             	<%= yield %>
-             </div><!--container-->                          	
-        </div><!--content-->
+        <div id="container">
+            <%= yield %>
+         </div><!--container-->
+      </div><!--content-->
     </div><!--wrapper-->
 
-<div id="footer">
-    	<div class="content">
-                   <a href="#"><span class="leftp">copyright 2010 your comapny name</span></a>
-                   <a href="http://vectorart.org"><span class="rightp"> Thanks to VectorArt</span></a>
-                 </div><!--content-->
-                        
-</div><!--footer-->        
-</body>
+    <div id="footer">
+            <div class="content">
+                       <a href="#"><span class="leftp">copyright 2010 your company name</span></a>
+                       <a href="http://vectorart.org"><span class="rightp"> Thanks to VectorArt</span></a>
+                     </div><!--content-->
+
+    </div><!--footer-->
+  </body>
 </html>

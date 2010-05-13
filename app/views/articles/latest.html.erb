@@ -1,20 +1,31 @@
-<div>
+<div id="nothing">
   <h3 class='titles'><%= @article.title %> </h3>
   <p class="author">by <%= Author.find(@article.author_id).full_name %></p>
   <hr />
   
   <div class='blog-body'>
     <%= @article.body %>
-
   </div><hr /><br />
 
   <% if @article.is_posted? %>
-    <%= view_comments(@article) %>
     <%= render :partial => 'comments/form', :locals => {:comment => @comment, :article =>@article} %>
+    
+    <hr />
+    <a id="linkall" href="javascript:display('hide', '-1')">Hide All Comments</a>
+    <br />
+    <br />
+    <p>Comments: </p>
+    <div class='blog-comments' id ='bodyall'>
+      <%= view_all_comments(@article) %>
+    </div>
   <% end %>
-
-  <br /><br /><hr />
+  <hr />
+  
   <% if logged_in? %>
     <%= article_actions(@article) %>
   <% end %>
+  <hr />
 </div>
+
+
+

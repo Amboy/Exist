@@ -51,8 +51,8 @@ module ArticlesHelper
           <th class="Labels">Actions:</th>
           <td >
             <ul class="nobullets">
-              <li> #{link_to "Edit", edit_article_path(article) if !article.is_posted? }</li>
-              <li> #{link_to "Delete", article, :confirm => "Confirm delete? \'#{article.title}\'", :method => :delete}</li>
+              <li> #{link_to "Edit", edit_article_path(article) if !article.is_posted? } </li>
+              <li> #{link_to "Delete", article, :confirm => "Confirm delete? \'#{article.title}\'", :method => :delete} </li>
             </ul>
           </td>
         </tr>
@@ -63,12 +63,10 @@ module ArticlesHelper
       <br />
     }
   end
-  def view_comments(article)
-    %Q{
-      <p>Comments: </p>
-      <div class='blog-comments'>
-        #{article.comments.map{|c| comment_body(c)}.to_s }
-      </div>
+  def view_all_comments(article)
+    %Q{      
+
+        #{article.comments.map{|c| comment_body(c)}.reverse.to_s }
       }
   end
   
@@ -78,15 +76,21 @@ module ArticlesHelper
         <tr>
           <td class="Labels">Actions: </td>
           <td>
-            <ul class="nobullets">
-              <li>#{link_to "Print Document", print_article_path(article)}</li>
-              <li>#{link_to "Delete", article, :confirm => "Confirm delete? \'#{article.title}\'", :method => :delete}</li>
+            <ul class = "nobullets">
+              <li>like</li>
+              <li> #{link_to "Edit", edit_article_path(article) if !article.is_posted? } </li>
+            </ul>
+          </td>
+          <td>
+            <ul class="nobullets">              
+              <li> #{link_to "Print Document", print_article_path(article)} </li>
+              <li> #{link_to "Delete", article, :confirm => "Confirm delete? \'#{article.title}\'", :method => :delete} </li>
             </ul>
           </td>
           <td>
             <ul class="nobullets">
-              <li>#{link_to "Back to Author index", authors_path} </li>
-              <li>#{link_to "Back to Article index", articles_path} </li>
+              <li> #{link_to "Back to Author index", authors_path} </li>
+              <li> #{link_to "Back to Article index", articles_path} </li>
             </ul>
           </td>
         </tr>

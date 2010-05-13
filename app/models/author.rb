@@ -2,7 +2,10 @@ class Author < ActiveRecord::Base
 
   #Associations
   #
-  has_many :articles
+  has_many :articles, :dependent => :destroy
+  has_many :likes
+  has_many :fav_articles, :through => :likes, :source => :article
+  
   #Plugins
   #
   acts_as_authentic {|c| c.login_field = :login }

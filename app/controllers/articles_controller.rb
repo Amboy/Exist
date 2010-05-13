@@ -10,9 +10,13 @@ class ArticlesController < ApplicationController
   end
 
   def latest
-    @article = Article.latest.first
-    @comment = Comment.new(:article_id => @article.id)
-
+     if Article.latest.first.nil?
+        current_author.nil? ?  (redirect_to "/login") : (redirect_to "/articles")
+     else
+        @article = Article.latest.first
+        @comment = Comment.new(:article_id => @article.id)
+     end
+   
   end
 
   def show

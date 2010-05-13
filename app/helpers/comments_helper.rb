@@ -2,26 +2,31 @@
 module CommentsHelper
 
   def comment_body(comment)
+
     return " " if comment.new_record?
-    %Q{
-	     <table>
-         <tr>
-		       <th class="email">email address: </th>
-		       <td class="email">#{comment.email}</th>
-	       </tr>
-         <tr>
-		       <th>Time Posted: </th>
-		       <td>#{comment.created_at.strftime("%B %d, %Y , %H:%M")}</th>
-	       </tr>
-	       <tr>
-		       <th>Comment:</th>
-		       <td class="comment">#{comment.body}</td>
-	       </tr>
-	     <br />
-       <table>
+
+    %Q{      
+         <br />
+         <table id=body#{comment.id}>
+           <tr>
+             <th class="email">email address: </th>
+             <td class="email">#{comment.email}</td>
+           </tr>
+           <tr>
+             <th>Time Posted: </th>
+             <td>#{comment.created_at.strftime("%B %d, %Y , %H:%M")}</td>
+           </tr>
+           <tr>
+             <th>Comment:</th>
+             <td class="comment">#{comment.body}</td>
+           </tr>         
+         </table>
+         
+         <a id = link#{comment.id} href="javascript:display('show', #{comment.id})"> Hide this Comment </a>
+        <br />
       }
   end
-  def post_comment(f)
+  def post_new_comment(f)
     %Q{
        <table style="width:100%">
          <tr>

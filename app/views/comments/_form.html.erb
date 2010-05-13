@@ -1,6 +1,12 @@
-<% form_for( :comment, :url => article_comments_path(article)) do |f|%>
+
 <hr />
 <h3 class="titles">Post a Comment </h3>
-  <%= post_comment(f) %>
-  <%= f.submit 'post comment' %>
+<p><%= Article.find(article.id).comments.count %></p>
+
+<% form_remote_for(:comment, :update=> "bodyall",:position => :top,
+                             :url=> {:controller => :comments,
+                                     :action => :create,
+                                     :article_id => article.id}) do |f| %>
+  <%= post_new_comment(f) %>
+  <%= submit_tag 'Post Comment' %>
 <% end %>

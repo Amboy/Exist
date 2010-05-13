@@ -3,7 +3,9 @@ class Article < ActiveRecord::Base
   #Associations
   #
   belongs_to :author
-  has_many :comments
+  has_many :comments, :dependent => :destroy
+  has_many :likes
+  has_many :fav_authors, :through => :likes, :source => :author
 
   #validations
   #
